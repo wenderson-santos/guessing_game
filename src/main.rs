@@ -1,9 +1,19 @@
 use std::io; // To obtain user input and then print the result as output.
 
+// Rng trait defines methods that random number generators implement,
+// and this trait must be in scope for us to use those methods.
+use rand::Rng;
+
 // Entry point into the program
 fn main() {
     // println!() is a macro that prints a string to the screen
     println!("Guess the number!");
+
+    // gives us the particular random number generator we're going to use
+    // one that is local to the current thread of execution and is seeded by the OS
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
 
     println!("Please input your guess: ");
 
